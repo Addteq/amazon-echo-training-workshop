@@ -1,5 +1,7 @@
 var rp =  require('request-promise')
 
+var API_KEY = '3c2f5b2bd78c2c1d28e9051298effefa'
+
 module.exports.getWeatherForCity = function(city) {
 	return new Promise(function(resolve, reject) {
 		requestWeatherFromAPI(city)
@@ -25,7 +27,7 @@ function requestWeatherFromAPI(city) {
 	    uri: 'http://api.openweathermap.org/data/2.5/weather',
 	    qs: {
 	        q: city,
-	        APPID: '3c2f5b2bd78c2c1d28e9051298effefa'
+	        APPID: API_KEY
 	    },
 	    headers: {
 	        'User-Agent': 'Request-Promise'
