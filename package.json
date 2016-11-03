@@ -10,10 +10,8 @@
   "author": "Roberto Arias-Yacupoma <roberto.yacupoma@addteq.com>",
   "license": "ISC",
   "dependencies": {
+    "alexa-app": "^2.3.4",
     "request": "^2.76.0",
     "request-promise": "^4.1.1"
-  },
-  "alexa": {
-    "applicationId":"amzn1.echo-sdk-ams.app.999999-d0ed-9999-ad00-999999d00ebe"
   }
 }
