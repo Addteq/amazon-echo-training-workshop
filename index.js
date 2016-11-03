@@ -22,13 +22,16 @@ app.launch(function(req, res) {
 
 
 /*
-	Defining an available intents
-	This one takes 1 input from the user (the slot), the slot "CITY", which is a LITERAL (a string)
+	Defining an available intent
+	This one takes 1 input from the user: the slot "CITY", which uses a custom slot type called "LIST_OF_CITIES"
+
+	The custom slot type is defined when creating the Alexa Skill
+
 	The possible phrases an user can call this intent (the utterances) are:
-		"Weather <CITY>"
-		"Weather for <CITY>"
-		"Weather at <CITY>"
-		"Weather in <CITY>"
+		"Weather     {CITY}"
+		"Weather for {CITY}"
+		"Weather at  {CITY}"
+		"Weather in  {CITY}"
 */
 app.intent('AskWeatherInCity', {
 		slots: { CITY: "LIST_OF_CITIES" },
