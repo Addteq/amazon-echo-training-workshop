@@ -8,8 +8,8 @@ module.exports.getWeatherForCity = function(city) {
 		
 		.then(function(result) {
 			resolve({
-				min: toFarenheit(result.main.temp_min), 
-				max: toFarenheit(result.main.temp_max)
+				min: Math.floor(toFarenheit(result.main.temp_min)), 
+				max: Math.floor(toFarenheit(result.main.temp_max))
 			})
 		})
 
