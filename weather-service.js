@@ -1,22 +1,26 @@
-var rp =  require('request-promise')
+var request =  require('request-promise')
 
-var API_KEY = '3c2f5b2bd78c2c1d28e9051298effefa'
+// REMEMBER TO GET AN API_KEY from https://openweathermap.org/api TO USE THIS EXAMPLE
+var API_KEY = require('./weatherAPIKey.json').API_KEY
+
 
 module.exports.getWeatherForCity = function(city) {
+
 	return new Promise(function(resolve, reject) {
-		requestWeatherFromAPI(city)
 		
+		requestWeatherFromAPI(city)
 		.then(function(result) {
 			resolve({
 				min: Math.floor(toFarenheit(result.main.temp_min)), 
 				max: Math.floor(toFarenheit(result.main.temp_max))
 			})
 		})
-
 		.catch(function(err) {
 			reject(err)
 		})
+
 	})
+
 }
 
 
@@ -35,7 +39,7 @@ function requestWeatherFromAPI(city) {
 	    json: true
 	};
 
-	return rp(options)
+	return request(options)
 }
 
 function toFarenheit(kelvin) {
