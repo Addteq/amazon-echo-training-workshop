@@ -31,7 +31,7 @@ app.launch(function(req, res) {
 		"Weather in <CITY>"
 */
 app.intent('AskWeatherInCity', {
-		slots: { CITY: "LITERAL" },
+		slots: { CITY: "LIST_OF_CITIES" },
 		utterances: ["{Weather} {|for|at|in} {CITY}"]
 	}, 
 
