@@ -14,18 +14,24 @@ This is a simple example of an Alexa app to use with Amazon Echo.
 ___
 Install NodeJS LTS (preferably v4.3.0, so it matches AWS Lambda).
 
-After cloning this repository, install the Node dependencies with the command:
-~~~
-npm install
-~~~
+	https://nodejs.org/en/download/
+
+Then, install the Node dependencies using this command:
+	~~~
+	npm install
+	~~~
 Also, make sure to generate a new API key from OpenWeatherAPI to use this app. It's free and quick. Just go to https://openweathermap.org/api, sign up for an account and it'll provide you an API key to use.
 
 Place your API key in the file **weatherAPIKey.json**
 
 Additionally, to test this app locally without using Amazon Echo / Alexa yet, do the following:
-* Clone the project **alexa-app-server** from this Github repository: https://github.com/matt-kruse/alexa-app-server. Install the dependencies with **npm install** after doing it.
-* In the new cloned directory, locate the folder **examples/apps** and copy this project's folder in it. You directory path should be **alexa-app-server/examples/apps/simple-weather**
-* Go to the **examples** folder, and run this command to start the test server:
+* Clone the project **alexa-app-server** from this Github repository: https://github.com/matt-kruse/alexa-app-server.
+* From the project's root directory, install its dependencies:
+	~~~
+	npm install
+	~~~
+* Locate the folder **examples/apps** and copy the SimpleWeather project folder in it. You directory path should be **alexa-app-server/examples/apps/simple-weather**
+* Go to the **alexa-app-server/examples** folder, and run this command to start the test server:
     ~~~
     node server
     ~~~
@@ -44,7 +50,16 @@ Create a new zip of the files that contain the code used by the app. This includ
 * weatherAPIKey.json
 * node_modules/
 
-Go to AWS Lambda console and do the following:
+First, we'll create an AWS role to run our Lambda function:
+1. In AWS, go to the IAM console
+2. Select "Roles" in the left menu
+3. Click in "Create New Role"
+4. Name your role as **lambda_basic_execution**
+5. In Role Type screen, select "AWS Lambda"
+6. In Attach Policy screen, use the filter textbox to find the role "AWSLambdaFullAccess" and select it
+7. Complete the role creation.
+
+Now, go to AWS Lambda console and do the following:
 1. Click on **Create a Lambda Function**
 2. Select the template **Blank Function** and click Next
 3. In the trigger screen, click in the empty dotted space, and select **Alexa Skills Kit**. This will allow the Alexa Service to run the app in Lambda. Then next
@@ -61,3 +76,6 @@ Go to AWS Lambda console and do the following:
 6. In the "Configuration" screen, select the Endpoint type **AWS Lambda ARN**, with region "North America", and provide the ARN string copied from the Lambda console.
 
 After this, your Alexa skill will be ready for testing. There is no need to continue with the Publishing setup, because now your registered Amazon Echo devices are able to connect to your Alexa skill.
+
+The screen "Testing" in Alexa Skill Kit has an Alexa Simulator that helps testing your app without using an Echo device.
+You can use it to listen how Alexa would say a response. Or enter an utterance defined in your Alexa skill to check that your Lambda function will run correctly when contacted by an Amazon Echo.
